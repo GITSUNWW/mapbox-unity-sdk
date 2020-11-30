@@ -12,7 +12,7 @@ namespace Mapbox.Unity.Location
 
 
 	/// <summary>
-	/// The DeviceLocationProvider is responsible for providing real world location and heading data,
+	/// ä¿®æ”¹The DeviceLocationProvider is responsible for providing real world location and heading data,
 	/// served directly from native hardware and OS. 
 	/// This relies on Unity's <see href="https://docs.unity3d.com/ScriptReference/LocationService.html">LocationService</see> for location
 	/// and <see href="https://docs.unity3d.com/ScriptReference/Compass.html">Compass</see> for heading.
@@ -316,9 +316,9 @@ namespace Mapbox.Unity.Location
 							// atan2 increases angle CCW, flip sign of latDiff to get CW
 							double latDiff = -(_lastPositions[i].x - _lastPositions[i - 1].x);
 							double lngDiff = _lastPositions[i].y - _lastPositions[i - 1].y;
-							// +90.0 to make top (north) 0°
+							// +90.0 to make top (north) 0Â°
 							double heading = (Math.Atan2(latDiff, lngDiff) * 180.0 / Math.PI) + 90.0f;
-							// stay within [0..360]° range
+							// stay within [0..360]Â° range
 							if (heading < 0) { heading += 360; }
 							if (heading >= 360) { heading -= 360; }
 							lastHeadings[i - 1] = (float)heading;
@@ -327,7 +327,7 @@ namespace Mapbox.Unity.Location
 						_userHeadingSmoothing.Add(lastHeadings[0]);
 						float finalHeading = (float)_userHeadingSmoothing.Calculate();
 
-						//fix heading to have 0° for north, 90° for east, 180° for south and 270° for west
+						//fix heading to have 0Â° for north, 90Â° for east, 180Â° for south and 270Â° for west
 						finalHeading = finalHeading >= 180.0f ? finalHeading - 180.0f : finalHeading + 180.0f;
 
 
